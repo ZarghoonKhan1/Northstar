@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a1f44" />
+    <title>Northstar | Account dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="bb-body">
+    <div class="app-shell auth-required">
+      <aside class="sidebar" id="sidebar" aria-label="Account navigation">
+        <div class="sidebar-profile">
+          <span class="avatar sidebar-avatar" id="sidebarAvatar">—</span>
+          <strong class="sidebar-name" id="sidebarUserName">Signed out</strong>
+          <span class="sidebar-balance-label">Account Balance</span>
+          <span class="sidebar-balance" id="sidebarBalance">$ 0.00</span>
+          <span class="sidebar-role" id="sidebarUserRole">Sign in to continue</span>
+        </div>
+
+        <nav class="nav-list" aria-label="Account navigation">
+          <button class="nav-link active" data-page="overview" type="button">
+            <span class="nav-icon" aria-hidden="true">⌂</span> Home
+          </button>
+          <button class="nav-link" data-page="starting" id="buyingNav" type="button">
+            <span class="nav-icon" aria-hidden="true">▶</span> Starting
+          </button>
+          <button class="nav-link" data-page="records" type="button">
+            <span class="nav-icon" aria-hidden="true">▤</span> Records
+          </button>
+          <button class="nav-link" data-page="topup" type="button">
+            <span class="nav-icon" aria-hidden="true">＋</span> Top Up
+          </button>
+          <button class="nav-link" data-page="withdraw" type="button">
+            <span class="nav-icon" aria-hidden="true">↗</span> Withdraw
+          </button>
+          <button class="nav-link" data-page="personal" type="button">
+            <span class="nav-icon" aria-hidden="true">◎</span> Personal Info
+          </button>
+          <button class="nav-link" data-page="bank" type="button">
+            <span class="nav-icon" aria-hidden="true">▥</span> Bank Information
+          </button>
+          <button class="nav-link" data-page="vip" type="button">
+            <span class="nav-icon" aria-hidden="true">♛</span> VIP Level
+          </button>
+          <button class="nav-link" data-page="financial" type="button">
+            <span class="nav-icon" aria-hidden="true">$</span> Financial Statement
+          </button>
+          <button class="nav-link" data-page="terms" type="button">
+            <span class="nav-icon" aria-hidden="true">▧</span> Terms Of Use
+          </button>
+          <button class="nav-link" data-page="member" type="button">
+            <span class="nav-icon" aria-hidden="true">☰</span> Member Description
+          </button>
+          <button class="nav-link" data-page="about" type="button">
+            <span class="nav-icon" aria-hidden="true">ⓘ</span> About Us
+          </button>
+          <button class="nav-link" data-page="shop" type="button">
+            <span class="nav-icon" aria-hidden="true">▣</span> Shop
+          </button>
+          <a class="nav-link" href="/information.html">
+            <span class="nav-icon" aria-hidden="true">▤</span> Platform Information
+          </a>
+          <a class="nav-link" href="/company.html">
+            <span class="nav-icon" aria-hidden="true">⌂</span> Company
+          </a>
+          <button class="nav-link nav-link-admin" data-page="admin" id="adminNav" hidden type="button">
+            <span class="nav-icon" aria-hidden="true">⚙</span> Admin Panel
+          </button>
+          <button class="nav-link nav-link-admin" data-page="superadmin" id="superAdminNav" hidden type="button">
+            <span class="nav-icon" aria-hidden="true">✦</span> Super Admin
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="sidebar-signout" id="signOutButton" type="button">Sign out</button>
+        </div>
+      </aside>
+
+      <div class="backdrop" id="backdrop"></div>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div class="topbar-start">
+            <button class="icon-button menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar" type="button">☰</button>
+            <a class="topbar-brand" href="#overview" aria-label="Northstar home">
+              <span class="brand-mark" aria-hidden="true">N</span>
+              <span class="brand-name">northstar</span>
+            </a>
+            <div class="page-context">
+              <span aria-hidden="true">Account</span>
+              <span aria-hidden="true">/</span>
+              <strong id="breadcrumb">Home</strong>
+            </div>
+          </div>
+
+          <div class="topbar-actions">
+            <span class="sample-pill" id="connectionBadge">Connecting…</span>
+            <button class="account-button" data-page="personal" type="button">My Profile</button>
+            <span class="avatar" id="headerAvatar" aria-label="Signed out">—</span>
+          </div>
+        </header>
+
+        <div class="warm-reminder">
+          <span aria-hidden="true">🔔</span>
+          Warm Reminder: Unlock exclusive VIP benefits with every level upgrade! The higher your VIP level,
+          the more orders you can receive and the higher your commission percentage you can earn.
+        </div>
+
+        <main class="content">
+          <section class="page-panel active" id="panel-overview" aria-labelledby="welcomeTitle">
+            <div class="home-intro">
+              <div class="home-intro-left">
+                <p class="eyebrow" id="todayLabel"></p>
+                <h1 id="welcomeTitle">HI Login</h1>
+                <p><span class="heart" aria-hidden="true">♥</span> Welcome to your Northstar account dashboard</p>
+              </div>
+              <button class="user-switcher" data-page="personal" type="button">
+                <span class="user-icon" aria-hidden="true">👤</span>
+                <span id="homeUserName">shamsa</span>
+                <span class="arrow" aria-hidden="true">▼</span>
+              </button>
+            </div>
+
+            <div class="home-actions" aria-label="Account actions">
+              <button class="home-action" data-page="starting" type="button"><span class="home-action-icon" aria-hidden="true">▶</span><span>Starting</span></button>
+              <button class="home-action" data-page="financial" type="button"><span class="home-action-icon" aria-hidden="true">$</span><span>Financial Statement</span></button>
+              <button class="home-action" data-page="withdraw" type="button"><span class="home-action-icon" aria-hidden="true">↗</span><span>Withdrawal</span></button>
+              <button class="home-action" data-page="topup" type="button"><span class="home-action-icon" aria-hidden="true">☎</span><span>Customer Service</span></button>
+              <button class="home-action" data-page="terms" type="button"><span class="home-action-icon" aria-hidden="true">▧</span><span>Terms Of Use</span></button>
+              <button class="home-action" data-page="starting" type="button"><span class="home-action-icon" aria-hidden="true">◈</span><span>Revenue Simulation</span></button>
+              <button class="home-action" data-page="member" type="button"><span class="home-action-icon" aria-hidden="true">☰</span><span>Member Description</span></button>
+              <button class="home-action" data-page="about" type="button"><span class="home-action-icon" aria-hidden="true">ⓘ</span><span>About Us</span></button>
+            </div>
+
+            <section class="home-vip" aria-labelledby="vipHomeTitle">
+              <div class="home-vip-head">
+                <div>
+                  <p class="eyebrow">Membership</p>
+                  <h2 id="vipHomeTitle">Your VIP level</h2>
+                </div>
+                <button class="text-button" data-page="vip" type="button">View More &gt;</button>
+              </div>
+
+              <div class="vip-tabs" role="tablist" aria-label="VIP levels">
+                <button class="vip-tab active" data-vip-tier="Bronze" type="button" role="tab">VIP 1 - Bronze</button>
+                <button class="vip-tab" data-vip-tier="Silver" type="button" role="tab">VIP 2 - Silver</button>
+                <button class="vip-tab" data-vip-tier="Gold" type="button" role="tab">VIP 3 - Gold</button>
+                <button class="vip-tab" data-vip-tier="Platinum" type="button" role="tab">VIP 4 - Platinum</button>
+                <button class="vip-tab" data-vip-tier="Diamond" type="button" role="tab">VIP 5 - Diamond</button>
+                <button class="vip-tab" data-vip-tier="Elite" type="button" role="tab">VIP 6 - Black Diamond</button>
+              </div>
+
+              <div class="vip-detail">
+                <div class="vip-detail-head">
+                  <h3 id="vipDetailTitle">👑 VIP 1 · Bronze</h3>
+                  <span class="sample-pill" id="overviewMembershipLevel">Bronze</span>
+                </div>
+                <ul class="vip-benefits" id="vipDetailList">
+                  <li>Up to 60 simulated orders per day</li>
+                  <li>Illustrative commission rate of 0.15%</li>
+                  <li>Simulated price adjustment of 0%</li>
+                  <li>Priority support from your account manager</li>
+                </ul>
+              </div>
+
+              <div class="vip-progress">
+                <div class="stat-top">
+                  <span class="stat-label">Profile completeness</span>
+                  <span class="stat-icon" aria-hidden="true">◎</span>
+                </div>
+                <strong class="stat-value" id="profileCompleteness">—</strong>
+                <span class="stat-foot" id="profileCompletenessFoot">Based on your profile details</span>
+                <span class="stat-foot" id="overviewAccountStatus">Account status: —</span>
+              </div>
+            </section>
+
+            <section class="card section-card" aria-labelledby="overviewTiersTitle">
+              <div class="section-heading">
+                <div>
+                  <h2 id="overviewTiersTitle">Membership levels</h2>
+                  <p>Your assigned level is managed by Northstar.</p>
+                </div>
+                <button class="text-button" data-page="vip" type="button">All tiers →</button>
+              </div>
+              <div class="membership-grid" id="overviewMembershipGrid"></div>
+            </section>
+
+            <section class="card section-card" aria-labelledby="overviewProductsTitle">
+              <div class="section-heading">
+                <div>
+                  <h2 id="overviewProductsTitle">Featured products</h2>
+                  <p>Catalog items added by Northstar staff. Nothing is sold or paid for on this site.</p>
+                </div>
+                <button class="text-button" data-page="shop" type="button">Open catalog →</button>
+              </div>
+              <div class="product-grid overview-product-grid" id="overviewProductGrid">
+                <p class="catalog-status">Loading catalog…</p>
+              </div>
+            </section>
+
+            <section class="card section-card" aria-labelledby="overviewActivityTitle">
+              <div class="section-heading">
+                <div>
+                  <h2 id="overviewActivityTitle">Recent wallet activity</h2>
+                  <p>Recorded credits and reservations on your account.</p>
+                </div>
+                <button class="text-button" data-page="financial" type="button">Full statement →</button>
+              </div>
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Balance after</th></tr></thead>
+                  <tbody id="overviewActivityRows"><tr><td colspan="4">Loading wallet activity…</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-starting" aria-labelledby="startingPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Order matching</p>
+                <h1 id="startingPageTitle">Starting</h1>
+                <p>Review the matched product and simulate an order with demo funds.</p>
+              </div>
+              <span class="sample-pill">DEMO · No real money</span>
+            </div>
+
+            <p class="catalog-notice">
+              <strong>DEMO ONLY:</strong> No retailer order is placed, no payment is taken, and no real wallet
+              or withdrawal balance is changed. Product prices and commissions are generated examples stored
+              only in this browser.
+            </p>
+
+            <div class="overview-grid buying-summary" aria-label="Buying task summary">
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">Demo commission today</span><span class="stat-icon" aria-hidden="true">$</span></div>
+                <strong class="stat-value" id="demoCommissionToday">$0.00</strong>
+                <span class="stat-foot">Illustrative only · No cash value</span>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">Demo balance</span><span class="stat-icon" aria-hidden="true">▤</span></div>
+                <strong class="stat-value" id="demoBalance">$0.00</strong>
+                <span class="stat-foot">Separate from your account wallet</span>
+              </article>
+            </div>
+
+            <section class="card section-card buying-session-card">
+              <div class="buying-session-heading">
+                <strong id="demoSessionLabel">Demo ready</strong>
+                <strong id="buyingOrderCount">0 / 60 orders</strong>
+              </div>
+              <div class="buying-progress-track" id="buyingProgress" role="progressbar" aria-label="Demo orders today" aria-valuemin="0" aria-valuemax="60" aria-valuenow="0">
+                <span id="buyingProgressFill"></span>
+              </div>
+              <p class="buying-session-help" id="demoPurchaseHelp">The demo allows up to 60 simulated purchases per Pakistan calendar day.</p>
+              <button class="auth-submit buying-start-button" id="resetDemoButton" type="button">Reset demo data</button>
+            </section>
+
+            <section class="card section-card demo-product-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Matched product</h2>
+                  <p>One pictured item is repeated for 60 simulated orders. Values vary by order number and membership tier.</p>
+                </div>
+              </div>
+              <div class="admin-table-wrap">
+                <table class="admin-table demo-product-table">
+                  <thead><tr><th>Demo order</th><th>Product (simulation)</th><th>Demo price</th><th>Demo commission</th></tr></thead>
+                  <tbody id="demoProductRows"></tbody>
+                </table>
+              </div>
+              <div class="demo-purchase-actions">
+                <p id="demoPurchaseQuote" class="commission-preview" aria-live="polite"></p>
+                <button class="auth-submit" id="simulatePurchaseButton" type="button">Simulate purchase</button>
+                <p class="auth-message" id="demoPurchaseMessage" role="status" aria-live="polite"></p>
+              </div>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-records" aria-labelledby="recordsPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Order history</p>
+                <h1 id="recordsPageTitle">Records</h1>
+                <p>Every simulated order stored in this browser.</p>
+              </div>
+              <span class="sample-pill">Browser local</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Demo purchase history</h2>
+                  <p>This history is saved locally in this browser and is not a retailer or payment record.</p>
+                </div>
+              </div>
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead><tr><th>Time</th><th>Product</th><th>Demo price</th><th>Demo rate</th><th>Demo commission</th></tr></thead>
+                  <tbody id="demoOrderRows"><tr><td colspan="5">No demo purchases yet.</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-topup" aria-labelledby="topupPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Account funding</p>
+                <h1 id="topupPageTitle">Top Up</h1>
+                <p>Add funds to your Northstar account with help from an administrator.</p>
+              </div>
+              <span class="sample-pill">USD · Admin credited</span>
+            </div>
+
+            <div class="overview-grid">
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">Available balance</span><span class="stat-icon" aria-hidden="true">$</span></div>
+                <strong class="stat-value" id="walletBalance">$0.00</strong>
+                <span class="stat-foot">Updated live from your account</span>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">How to top up</span><span class="stat-icon" aria-hidden="true">☎</span></div>
+                <strong class="stat-value stat-value-small">Contact your account manager</strong>
+                <span class="stat-foot">Payment is confirmed outside the app, then recorded by an administrator.</span>
+              </article>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Wallet history</h2>
+                  <p>Administrator-confirmed credits recorded in your ledger.</p>
+                </div>
+              </div>
+              <p class="catalog-status" id="walletStatus" role="status" aria-live="polite">Loading wallet history…</p>
+              <div class="admin-table-wrap">
+                <table class="admin-table wallet-table">
+                  <thead>
+                    <tr><th>Date</th><th>Type</th><th>Amount</th><th>Reference</th><th>Note</th><th>Available balance after</th></tr>
+                  </thead>
+                  <tbody id="walletRows"><tr><td colspan="6">Loading wallet history…</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-withdraw" aria-labelledby="withdrawPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Payouts</p>
+                <h1 id="withdrawPageTitle">Withdraw</h1>
+                <p>This portal does not process payments or withdrawals.</p>
+              </div>
+              <span class="sample-pill">Not available</span>
+            </div>
+
+            <div class="overview-grid">
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">Available balance</span><span class="stat-icon" aria-hidden="true">$</span></div>
+                <strong class="stat-value" id="withdrawBalance">$0.00</strong>
+                <span class="stat-foot">Recorded account balance</span>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">Reserved balance</span><span class="stat-icon" aria-hidden="true">▤</span></div>
+                <strong class="stat-value" id="walletReservedBalance">$0.00</strong>
+                <span class="stat-foot">Held from legacy orders</span>
+              </article>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>No withdrawal requests</h2>
+                  <p>Northstar is a member account portal, not a payment platform.</p>
+                </div>
+              </div>
+              <ul class="vip-benefits">
+                <li>Withdrawals, checkout and payment processing are outside the scope of this website.</li>
+                <li>Balances shown here are records kept by Northstar staff; they are not held by this website.</li>
+                <li>Any payout is arranged directly with your account manager and is never started from this page.</li>
+                <li>Demo simulator funds are a local practice balance and are never withdrawable.</li>
+              </ul>
+              <button class="text-button" data-page="bank" type="button">Review bank information →</button>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-personal" aria-labelledby="personalPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Personal settings</p>
+                <h1 id="personalPageTitle">Personal Info</h1>
+                <p>Keep the personal details on your account up to date.</p>
+              </div>
+              <span class="sample-pill">Personal details</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Profile overview</h2>
+                  <p>Update the personal details that belong to your account.</p>
+                </div>
+              </div>
+              <form class="profile-form" id="profileForm">
+                <div class="profile-photo-control">
+                  <img id="profilePhotoPreview" alt="Profile photo preview" hidden />
+                  <label>Profile photo<input id="profilePhotoInput" type="file" accept="image/jpeg,image/png,image/webp" /></label>
+                  <button class="text-button" id="removeProfilePhoto" type="button">Remove photo</button>
+                </div>
+                <label>Display name<input id="profileDisplayName" type="text" maxlength="100" required /></label>
+                <label>Email address<input id="profileEmail" type="email" readonly /></label>
+                <label>Phone number<input id="profilePhone" type="tel" maxlength="40" /></label>
+                <label>Membership level<input id="profileMembership" type="text" readonly /></label>
+                <label>Account status<input id="profileStatus" type="text" readonly /></label>
+                <button class="auth-submit" id="saveProfileButton" type="submit">Save profile</button>
+                <button class="text-button" id="profilePasswordReset" type="button">Send password reset email</button>
+                <p class="auth-message" id="profileMessage" role="status" aria-live="polite"></p>
+              </form>
+              <p class="footer-note">Email, membership level, account status, and permissions are managed by Northstar.</p>
+            </section>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Change password</h2>
+                  <p>Choose a new password for your own account. You stay signed in on this device.</p>
+                </div>
+              </div>
+              <form class="profile-form" id="passwordForm">
+                <label>New password<input id="newPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" required /></label>
+                <label>Confirm new password<input id="confirmPassword" type="password" minlength="8" maxlength="72" autocomplete="new-password" required /></label>
+                <button class="auth-submit" id="changePasswordButton" type="submit">Change password</button>
+                <p class="auth-message" id="passwordMessage" role="status" aria-live="polite"></p>
+              </form>
+              <p class="footer-note">Passwords are stored by the authentication service; Northstar staff never see them.</p>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-bank" aria-labelledby="bankPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Payout details</p>
+                <h1 id="bankPageTitle">Bank Information</h1>
+                <p>The account used for approved withdrawals.</p>
+              </div>
+              <span class="sample-pill">Private to your account</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Bank account</h2>
+                  <p>Only you and authorized administrators can see these details.</p>
+                </div>
+              </div>
+              <form class="profile-form" id="bankForm">
+                <label>Bank name<input id="bankName" type="text" maxlength="120" /></label>
+                <label>Account holder name<input id="bankAccountName" type="text" maxlength="120" /></label>
+                <label>Account number / IBAN<input id="bankAccountNumber" type="text" maxlength="64" /></label>
+                <label>Branch<input id="bankBranch" type="text" maxlength="120" /></label>
+                <label>Country<input id="bankCountry" type="text" maxlength="80" /></label>
+                <button class="auth-submit" id="saveBankButton" type="submit">Save bank information</button>
+                <p class="auth-message" id="bankMessage" role="status" aria-live="polite"></p>
+              </form>
+              <p class="footer-note">Never share your bank password, card number, or one-time codes with anyone.</p>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-vip" aria-labelledby="vipPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Member benefits</p>
+                <h1 id="vipPageTitle">VIP Level</h1>
+                <p>Higher tiers unlock more daily orders and a higher commission percentage.</p>
+              </div>
+              <span class="sample-pill" id="membershipCurrentBadge">Current level: —</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Membership levels</h2>
+                  <p>Higher tiers show illustrative price adjustments and commission rates. They do not affect real prices or payouts.</p>
+                </div>
+              </div>
+              <div class="membership-grid" id="membershipGrid"></div>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-financial" aria-labelledby="financialPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Member earnings</p>
+                <h1 id="financialPageTitle">Financial Statement</h1>
+                <p>Sales and commissions recorded for your account.</p>
+              </div>
+              <span class="sample-pill" id="commissionRateBadge">Recorded estimate rate: —</span>
+            </div>
+
+            <p class="catalog-notice">
+              This administrator-recorded estimate history is separate from the demo purchase simulator.
+              The rates below are estimates applied to product cost, not guaranteed returns.
+            </p>
+
+            <div class="overview-grid commission-summary" aria-label="Commission summary">
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">Estimated profit recorded</span><span class="stat-icon" aria-hidden="true">$</span></div>
+                <strong class="stat-value" id="commissionTotal">$0.00</strong>
+                <span class="stat-foot">Excludes entries marked rejected</span>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">Product cost recorded</span><span class="stat-icon" aria-hidden="true">↗</span></div>
+                <strong class="stat-value" id="commissionSales">$0.00</strong>
+                <span class="stat-foot">Values entered by an administrator</span>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-top"><span class="stat-label">Per-order estimate</span><span class="stat-icon" aria-hidden="true">%</span></div>
+                <strong class="stat-value" id="commissionRate">0%</strong>
+                <span class="stat-foot" id="commissionTier">Bronze tier</span>
+              </article>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Commission history</h2>
+                  <p>Estimates use the saved tier rate and product cost at the time of recording.</p>
+                </div>
+              </div>
+              <p class="catalog-status" id="commissionStatus" role="status" aria-live="polite">Loading commissions…</p>
+              <div class="admin-table-wrap">
+                <table class="admin-table commission-table">
+                  <thead>
+                    <tr><th>Date</th><th>Order / reference</th><th>Member</th><th>Tier</th><th>Product cost</th><th>Rate</th><th>Estimated profit</th><th>Status</th></tr>
+                  </thead>
+                  <tbody id="commissionRows"><tr><td colspan="8">Loading commissions…</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-terms" aria-labelledby="termsPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Platform usage terms and conditions</p>
+                <h1 id="termsPageTitle">Terms Of Use</h1>
+                <p>These Terms of Use govern the interactions between Northstar and individuals accessing the Website.</p>
+              </div>
+              <span class="sample-pill">Member information</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>1. Table of Contents</h2>
+                  <p>Website content and links</p>
+                </div>
+              </div>
+              <p class="information-copy">
+                This website contains information, articles, newsletters and bulletins from Northstar
+                and its attorneys, news, links to external electronic websites and various images.
+              </p>
+            </section>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>2. Intellectual Property Rights</h2>
+                  <p>Ownership of content</p>
+                </div>
+              </div>
+              <p class="information-copy">
+                All content is the intellectual property of Northstar, unless it is owned by
+                third parties who have given consent for reproduction.
+              </p>
+              <p class="information-note">
+                This page presents the terms text supplied for the site. It does not add or infer terms
+                that were not provided.
+              </p>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-member" aria-labelledby="memberPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">About membership</p>
+                <h1 id="memberPageTitle">Member Description</h1>
+                <p>How the Northstar platform works for members.</p>
+              </div>
+              <span class="sample-pill">Member guide</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>How our platform works</h2>
+                  <p>Dear Northstar users</p>
+                </div>
+              </div>
+              <p class="information-copy">
+                The platform will list the products of merchants who need to increase exposure on the
+                platform every day. New users must first complete their real personal information. All
+                orders will be matched through the intelligent cloud algorithm, please wait patiently.
+              </p>
+              <p class="information-note">
+                The demo simulator uses browser-local sample data only. It does not create retailer orders,
+                real commissions, payments, or withdrawable funds.
+              </p>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-about" aria-labelledby="aboutPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Northstar</p>
+                <h1 id="aboutPageTitle">About Us</h1>
+                <p>About Northstar, its member platform, and the information it provides.</p>
+              </div>
+              <span class="sample-pill">Company profile</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Our purpose</h2>
+                  <p>About us</p>
+                </div>
+              </div>
+              <p class="information-copy">
+                Northstar aims to make everyday technology needs easier to meet by combining technical
+                knowledge with helpful, personal service across online and in-person experiences.
+              </p>
+            </section>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>The Northstar platform</h2>
+                  <p>About the company</p>
+                </div>
+              </div>
+              <p class="information-copy">
+                Northstar provides a member dashboard for account details, membership information,
+                product listings, commission estimates, and administrator-confirmed wallet credits.
+                Members can view information associated with their own account, while authorized
+                administrators manage account records and platform entries.
+              </p>
+              <p class="information-note">
+                Commission values are estimates, not guaranteed returns. Wallet credits are entered by an
+                administrator after confirming payment outside the app; the platform does not process
+                payments, purchases, bidding, transfers, or withdrawals.
+              </p>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-shop" aria-labelledby="shopPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Electronics storefront</p>
+                <h1 id="shopPageTitle">Shop</h1>
+                <p>Browse the product selection and continue to the storefront.</p>
+              </div>
+              <span class="sample-pill">Prices need verification</span>
+            </div>
+
+            <section class="floating-wall" aria-labelledby="floatingWallTitle">
+              <div class="floating-wall-heading">
+                <p class="eyebrow">Featured products</p>
+                <h2 id="floatingWallTitle">Find your next favorite</h2>
+              </div>
+              <div class="product-marquee" id="productMarquee" aria-label="Featured products"></div>
+            </section>
+
+            <p class="catalog-notice">
+              Product details and prices are unverified. Choosing "Visit storefront" opens
+              <span class="nowrap">buy.bestbuyer.org</span> in a new tab; the link goes to the storefront home page,
+              not individual products. No affiliate tracking or purchase verification is configured.
+            </p>
+
+            <dialog class="product-dialog" id="productDialog" aria-labelledby="productDialogTitle">
+              <div class="product-dialog-inner">
+                <button class="product-dialog-close" id="productDialogClose" type="button" aria-label="Close product details">×</button>
+                <div class="product-dialog-media" id="productDialogMedia"></div>
+                <div class="product-dialog-body">
+                  <p class="eyebrow">Product details</p>
+                  <h2 id="productDialogTitle"></h2>
+                  <p class="product-dialog-price" id="productDialogPrice"></p>
+                  <p class="product-dialog-description" id="productDialogDescription"></p>
+                  <p class="product-dialog-note">
+                    Prices are unverified. Buying continues on the storefront, outside this portal.
+                  </p>
+                  <div class="product-dialog-actions">
+                    <a class="product-link" id="productDialogLink" href="https://buy.bestbuyer.org" target="_blank" rel="noopener noreferrer">Visit storefront</a>
+                    <button class="text-button" id="productDialogDismiss" type="button">Close</button>
+                  </div>
+                </div>
+              </div>
+            </dialog>
+
+            <section class="card section-card catalog-admin" id="catalogAdminPanel" hidden aria-labelledby="catalogAdminTitle">
+              <div class="section-heading">
+                <div>
+                  <h2 id="catalogAdminTitle">Manage catalog</h2>
+                  <p>Admins can add products, upload pictures, and maintain storefront links.</p>
+                </div>
+                <button class="text-button" id="seedCatalogButton" type="button">Add starter products</button>
+              </div>
+
+              <form class="catalog-form" id="productForm">
+                <label>Product name<input id="productName" type="text" maxlength="120" required /></label>
+                <label>Description<textarea id="productDescription" maxlength="500" rows="2"></textarea></label>
+                <label>Price (USD)<input id="productPrice" type="number" min="0" step="0.01" required /></label>
+                <label>Storefront product URL<input id="productUrl" type="url" required /></label>
+                <label>Product picture<input id="productImage" type="file" accept="image/jpeg,image/png,image/webp" /></label>
+                <p class="catalog-form-hint">JPEG, PNG, or WebP; maximum 5 MB. New products require a picture.</p>
+                <div class="catalog-form-actions">
+                  <button class="auth-submit" id="saveProductButton" type="submit">Add product</button>
+                  <button class="text-button" id="cancelProductEdit" type="button" hidden>Cancel edit</button>
+                </div>
+                <p class="auth-message" id="catalogMessage" role="status" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <p class="catalog-status" id="catalogStatus" role="status" aria-live="polite" hidden></p>
+            <section class="product-grid" id="productGrid" aria-live="polite">
+              <p class="activity-empty">Loading products…</p>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-admin" aria-labelledby="adminPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Restricted workspace</p>
+                <h1 id="adminPageTitle">Admin Panel</h1>
+                <p>Access is enforced by Supabase row level security and the admin Edge Function.</p>
+              </div>
+              <span class="sample-pill" id="adminRoleLabel">Admin</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Credit member wallet</h2>
+                  <p>Confirm the off-platform payment first. This creates an audited credit; it does not collect money.</p>
+                </div>
+              </div>
+              <form class="commission-form" id="walletCreditForm">
+                <label>Member<select id="walletCreditMember" required><option value="">Load member accounts…</option></select></label>
+                <label>Credit amount (USD)<input id="walletCreditAmount" type="number" min="0.01" step="0.01" required /></label>
+                <label>Payment reference<input id="walletCreditReference" type="text" maxlength="120" required /></label>
+                <label>Admin note<input id="walletCreditNote" type="text" maxlength="240" required /></label>
+                <label class="wallet-confirm-label"><input id="walletCreditConfirmed" type="checkbox" required /> I confirmed this payment outside the app.</label>
+                <button class="auth-submit" id="walletCreditButton" type="submit">Credit wallet</button>
+                <p class="auth-message" id="walletAdminMessage" role="status" aria-live="polite"></p>
+              </form>
+              <p class="footer-note">Do not enter card numbers, passwords, or bank-account credentials in the reference or note.</p>
+            </section>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Record commission</h2>
+                  <p>Enter an order reference and product cost. The server applies the member's current VIP rate.</p>
+                </div>
+              </div>
+              <form class="commission-form" id="commissionForm">
+                <label>Member<select id="commissionMember" required><option value="">Load member accounts…</option></select></label>
+                <label>Order / reference<input id="commissionReference" type="text" maxlength="120" required /></label>
+                <label>Product cost (USD)<input id="commissionProductCost" type="number" min="0.01" step="0.01" required /></label>
+                <div class="commission-preview" id="commissionPreview" aria-live="polite">Select a member to estimate profit from product cost.</div>
+                <button class="auth-submit" id="recordCommissionButton" type="submit">Record estimate</button>
+                <p class="auth-message" id="commissionAdminMessage" role="status" aria-live="polite"></p>
+              </form>
+              <p class="footer-note">Recorded projections are not confirmed earnings. A “paid” status is an admin record only.</p>
+            </section>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Legacy bid records</h2>
+                  <p>Historical bid records only.</p>
+                </div>
+              </div>
+              <p class="catalog-status" id="adminBidsStatus" role="status" aria-live="polite">Loading bid review queue…</p>
+              <div class="admin-table-wrap">
+                <table class="admin-table bid-table admin-bid-table">
+                  <thead><tr><th>Submitted</th><th>Member</th><th>Product</th><th>Bid</th><th>Status</th><th>Estimate only</th><th>Resale details</th><th>Actual profit</th><th>Record</th></tr></thead>
+                  <tbody id="adminBidRows"><tr><td colspan="9">Loading legacy bid records…</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Account directory</h2>
+                  <p>Profiles visible to authorized staff only.</p>
+                </div>
+                <button class="text-button" id="refreshAccounts" type="button">Refresh</button>
+              </div>
+
+              <p class="auth-message" id="adminMessage" role="status" aria-live="polite"></p>
+              <form class="role-form" id="createUserForm">
+                <input id="newUserName" type="text" placeholder="Display name" aria-label="New user display name" required maxlength="100" />
+                <input id="newUserEmail" type="email" placeholder="Email address" aria-label="New user email address" required />
+                <select id="newUserMembership" aria-label="New user membership">
+                  <option value="Bronze">Bronze</option><option value="Silver">Silver</option><option value="Gold">Gold</option><option value="Platinum">Platinum</option><option value="Diamond">Diamond</option><option value="Elite">Elite</option>
+                </select>
+                <input id="newUserPhone" type="tel" placeholder="Phone (optional)" aria-label="New user phone number" maxlength="40" />
+                <input id="newUserDepartment" type="text" placeholder="Department (optional)" aria-label="New user department" maxlength="100" />
+                <button type="submit">Create user account</button>
+              </form>
+              <div class="invite-panel" id="inviteLinkContainer" hidden>
+                <p>Account created. Share this password setup link securely with the user.</p>
+                <a id="inviteLink" target="_blank" rel="noopener noreferrer"></a>
+              </div>
+
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Account ID</th>
+                      <th>Phone</th>
+                      <th>Department</th>
+                      <th>Membership</th>
+                      <th>Last sign-in</th>
+                      <th>Status</th>
+                      <th id="accountRoleHeader" hidden>Role</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="accountsBody">
+                    <tr><td colspan="10">Sign in with an authorized account to load profiles.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+
+          <section class="page-panel" id="panel-superadmin" aria-labelledby="superAdminPageTitle">
+            <div class="welcome">
+              <div>
+                <p class="eyebrow">Restricted workspace</p>
+                <h1 id="superAdminPageTitle">Super Admin Panel</h1>
+                <p>Manage administrator access and review protected audit history.</p>
+              </div>
+              <span class="sample-pill">Protected controls</span>
+            </div>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Create an admin account</h2>
+                  <p>A password setup link is generated for the new administrator. Share it securely.</p>
+                </div>
+              </div>
+              <form class="role-form" id="createAdminForm">
+                <input id="newAdminName" type="text" placeholder="Display name" aria-label="New admin display name" required maxlength="100" />
+                <input id="newAdminEmail" type="email" placeholder="Email address" aria-label="New admin email address" required />
+                <button type="submit">Create admin account</button>
+              </form>
+              <div class="invite-panel" id="adminInviteLinkContainer" hidden>
+                <p>Account created. Share this password setup link securely with the new administrator.</p>
+                <a id="adminInviteLink" target="_blank" rel="noopener noreferrer"></a>
+              </div>
+              <p class="auth-message" id="superAdminMessage" role="status" aria-live="polite"></p>
+              <button class="text-button" data-page="admin" type="button">Open Admin Panel</button>
+            </section>
+
+            <section class="card section-card">
+              <div class="section-heading">
+                <div>
+                  <h2>Audit history</h2>
+                  <p>Recent account and administrator actions recorded by the Edge Function.</p>
+                </div>
+                <button class="text-button" id="refreshAuditLogs" type="button">Refresh</button>
+              </div>
+              <p class="catalog-status" id="auditLogStatus" role="status" aria-live="polite"></p>
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead><tr><th>When</th><th>Actor ID</th><th>Action</th><th>Target ID</th><th>Details</th></tr></thead>
+                  <tbody id="auditLogRows"><tr><td colspan="5">Sign in with an authorized account to view audit history.</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+        </main>
+
+        <footer class="home-footer">
+          Copyright © 2024 NORTHSTAR All Rights Reserved.
+        </footer>
+      </div>
+
+      <nav class="bottom-nav" aria-label="Primary navigation">
+        <button class="active" data-page="overview" type="button"><span aria-hidden="true">⌂</span>Home</button>
+        <button data-page="starting" id="buyingMobileNav" type="button"><span aria-hidden="true">▶</span>Starting</button>
+        <button data-page="records" type="button"><span aria-hidden="true">▤</span>Records</button>
+        <button data-page="admin" id="adminMobileNav" hidden type="button"><span aria-hidden="true">⚙</span>Admin</button>
+        <button data-page="superadmin" id="superAdminMobileNav" hidden type="button"><span aria-hidden="true">✦</span>Super</button>
+      </nav>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+    <script type="module" src="/product-wall.js"></script>
+  </body>
+</html>

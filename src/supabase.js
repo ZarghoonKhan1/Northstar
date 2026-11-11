@@ -1,0 +1,17 @@
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+export const storefrontOrigin = (import.meta.env.VITE_STOREFRONT_ORIGIN || 'https://buy.bestbuyer.org').replace(/\/$/, '');
+export const supabaseReady = Boolean(supabaseUrl && supabaseAnonKey);
+
+export const supabase = supabaseReady
+  ? createClient(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
+    })
+  : null;
